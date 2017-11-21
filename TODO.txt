@@ -1,0 +1,4 @@
+TODO: 
+- in the header, determine which component was clicked, pass the information from the link that was clicked there to the app component to then switch a property there that displays one of the two components
+- Emit something in header that says whether to load recipes or shopping list;
+- List for that in the app component and use ngif to only load one at a time
