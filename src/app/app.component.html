@@ -1,18 +1,11 @@
 <app-header
-  (recipeClicked)="onRecipeClick()"
-  (shoppingListClicked)="onShoppingClick()"
+  (featureSelected)="onNavigate($event)"
 ></app-header>
 <div class="container">
   <div class="row">
-    <div 
-      class="col-md-12"
-      *ngIf="showRecipe; then recipe_content else shopping_content"
-      ></div>
-    <ng-template #recipe_content>
-      <app-recipes></app-recipes>
-    </ng-template>
-    <ng-template #shopping_content>
-      <app-shopping-list></app-shopping-list>
-    </ng-template>
+    <div class="col-md-12">
+      <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
+      <app-shopping-list *ngIf="loadedFeature === 'shopping-list'"></app-shopping-list>
+    </div>
   </div>
 </div>

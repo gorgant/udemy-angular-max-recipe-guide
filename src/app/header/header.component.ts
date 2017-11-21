@@ -7,7 +7,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output('recipeClicked') recipeClicked = new EventEmitter<boolean>();
+  @Output() featureSelected = new EventEmitter<string>();
   @Output('shoppingListClicked') shoppingListClicked = new EventEmitter<boolean>();
 
   constructor() { }
@@ -15,14 +15,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  onRecipeClick(){
-    this.recipeClicked.emit(true);
-    console.log("recipe clicked");
+  onSelect(feature: string){
+    this.featureSelected.emit(feature);
   }
-
-  onShoppingListClick(){
-    this.shoppingListClicked.emit(true);
-    console.log("shopping clicked");
-  }
-
 }
