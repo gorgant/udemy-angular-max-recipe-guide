@@ -1,9 +1,18 @@
-<app-header></app-header>
+<app-header
+  (recipeClicked)="onRecipeClick()"
+  (shoppingListClicked)="onShoppingClick()"
+></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div 
+      class="col-md-12"
+      *ngIf="showRecipe; then recipe_content else shopping_content"
+      ></div>
+    <ng-template #recipe_content>
       <app-recipes></app-recipes>
+    </ng-template>
+    <ng-template #shopping_content>
       <app-shopping-list></app-shopping-list>
-    </div>
+    </ng-template>
   </div>
 </div>
