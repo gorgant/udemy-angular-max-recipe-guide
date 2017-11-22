@@ -8,7 +8,7 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeDetailComponent implements OnInit {
 
-  @Input() theRecipe: Recipe;
+  @Input() recipe: Recipe;
 
   constructor() { }
 

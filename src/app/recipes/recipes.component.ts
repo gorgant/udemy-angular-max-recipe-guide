@@ -9,16 +9,11 @@ import { Recipe } from './recipe.model'
 })
 export class RecipesComponent implements OnInit {
 
-  selectedRecipe = [];
+  selectedRecipe: Recipe;
   
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onRecipeSelect(recipe: Recipe) {
-    this.selectedRecipe.push(recipe);
-    console.log("Recipe master received selected recipe with name: " + recipe.name);
   }
 
 }

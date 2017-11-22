@@ -9,7 +9,7 @@ import { Recipe } from '../../recipe.model'
 export class RecipeItemComponent implements OnInit {
 
   @Input() recipe: Recipe;
-  @Output() selectedRecipeDetails = new EventEmitter<Recipe>();
+  @Output() recipeSelected = new EventEmitter<void>();
   // @Output() recipeDetails = new EventEmitter<{name: string, description: string, imagePath: string,}>();
 
   constructor() { }
@@ -17,12 +17,7 @@ export class RecipeItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  displayDetails() {
-    this.selectedRecipeDetails.emit({
-      name: this.recipe.name,
-      description: this.recipe.description,
-      imagePath: this.recipe.imagePath
-    });
-    console.log("Click registered for " + this.recipe.name);
+  onSelected() {
+    this.recipeSelected.emit();
   }
 }
