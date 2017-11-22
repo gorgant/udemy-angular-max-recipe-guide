@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Recipe } from './recipe.model'
+
 
 @Component({
   selector: 'app-recipes',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipesComponent implements OnInit {
 
+  selectedRecipe = [];
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onRecipeSelect(recipe: Recipe) {
+    this.selectedRecipe.push(recipe);
+    console.log("Recipe master received selected recipe with name: " + recipe.name);
   }
 
 }

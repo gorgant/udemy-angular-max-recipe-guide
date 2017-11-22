@@ -1,4 +1,6 @@
 TODO: 
-- in the header, determine which component was clicked, pass the information from the link that was clicked there to the app component to then switch a property there that displays one of the two components
-- Emit something in header that says whether to load recipes or shopping list;
-- List for that in the app component and use ngif to only load one at a time
+- Emit a click event on the single recipe item component
+- Send that to the recipes component and pass it to the recipe detail section
+- Requires property and event binding
+
+current sitch: I've set up the emit, now need to figure out how to receive it in the Recipes component (need to set up the listener in the HTML) and then pass that to the recipe detail section (guesssing I'll need an input setup similar to the recipe list)

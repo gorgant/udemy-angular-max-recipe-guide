@@ -8,7 +8,6 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Output() featureSelected = new EventEmitter<string>();
-  @Output('shoppingListClicked') shoppingListClicked = new EventEmitter<boolean>();
 
   constructor() { }
 
