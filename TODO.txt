@@ -1,6 +1,5 @@
 TODO: 
-- Emit a click event on the single recipe item component
-- Send that to the recipes component and pass it to the recipe detail section
-- Requires property and event binding
-
-current sitch: I've set up the emit, now need to figure out how to receive it in the Recipes component (need to set up the listener in the HTML) and then pass that to the recipe detail section (guesssing I'll need an input setup similar to the recipe list)
+- create a directive that allows us to add a certain css class to the element it sits on once it is clicked, and removes that class when the element is clicked again
+- create a method that listens to clicks and toggles a property that indicates whether a class is attached or not
+- try implementing some code that dynamically attaches a css class or not
+- implement this on recipe-detail (<div class="btn-group open">)
