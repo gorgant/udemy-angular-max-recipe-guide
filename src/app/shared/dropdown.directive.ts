@@ -1,7 +1,8 @@
 import { 
   Directive, 
   HostListener,
-  HostBinding
+  HostBinding,
+  OnInit
 } from '@angular/core';
 
 @Directive({
@@ -12,6 +13,10 @@ export class DropdownDirective implements OnInit {
 
   @HostListener('click') toggleOpen() {
     this.isOpen = !this.isOpen;
+  }
+
+  ngOnInit(){
+    
   }
 
 
