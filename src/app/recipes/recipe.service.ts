@@ -34,19 +34,8 @@ export class RecipeService {
     return this.recepies.slice();
   }
 
-  private recipeIngredients: Ingredient[] = [];
-
-  gatherRecipeIngredients(recipe: Recipe) {
-    this.recipeIngredients.length = 0;
-    console.log("Recipe to extract from: " + recipe.name);
-    this.recipeIngredients = recipe.ingredients.slice();
-    this.shoppingListService.addIngredientsFromRecipe(this.recipeIngredients.slice());
-    console.log("Ingredients gathered");
-    console.log(this.getRecipeIngredients());
-  }
-
-  getRecipeIngredients() {
-    return this.recipeIngredients.slice();
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
+    this.shoppingListService.addIngredients(ingredients.slice());
   }
 
 }
