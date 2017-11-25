@@ -1,5 +1,4 @@
 TODO: 
-- create a directive that allows us to add a certain css class to the element it sits on once it is clicked, and removes that class when the element is clicked again
-- create a method that listens to clicks and toggles a property that indicates whether a class is attached or not
-- try implementing some code that dynamically attaches a css class or not
-- implement this on recipe-detail (<div class="btn-group open">)
+- Send ingredient items from recipes to shopping list
+- Inform shopping list component that something changed
+- Needs to be able to add more than one item to the shopping list at once

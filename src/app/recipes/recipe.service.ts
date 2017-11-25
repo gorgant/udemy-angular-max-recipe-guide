@@ -1,17 +1,52 @@
-import { Output, EventEmitter } from '@angular/core';
+import { Output, EventEmitter, Injectable } from '@angular/core';
 
 import { Recipe } from './recipe.model';
+import { Ingredient } from '../shared/ingredient.model';
 
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
+
+@Injectable()
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
 
+  constructor(private shoppingListService: ShoppingListService) {}
+
   private recepies: Recipe[] = [
-    new Recipe('A Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg' ),
-    new Recipe('A Different Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg' ),
-  ]
+    new Recipe(
+      'Tasty Schnitzel', 
+      'A super-tasty Schnitzel - just awesome!', 
+      'https://upload.wikimedia.org/wikipedia/commons/a/ae/Wiener-Schnitzel02.jpg',
+      [
+        new Ingredient('Meat',1),
+        new Ingredient('French Fries',20),        
+      ]),
+    new Recipe(
+      'Big Fat Burger', 
+      'Yeah, its that good', 
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hamburger_%28black_bg%29.jpg/1920px-Hamburger_%28black_bg%29.jpg',
+      [
+        new Ingredient('Buns',2),
+        new Ingredient('Meat',1),        
+      ]),
+  ];
 
   getRecipes() {
     return this.recepies.slice();
-  }  
+  }
+
+  private recipeIngredients: Ingredient[] = [];
+
+  gatherRecipeIngredients(recipe: Recipe) {
+    this.recipeIngredients.length = 0;
+    console.log("Recipe to extract from: " + recipe.name);
+    this.recipeIngredients = recipe.ingredients.slice();
+    this.shoppingListService.addIngredientsFromRecipe(this.recipeIngredients.slice());
+    console.log("Ingredients gathered");
+    console.log(this.getRecipeIngredients());
+  }
+
+  getRecipeIngredients() {
+    return this.recipeIngredients.slice();
+  }
 
 }
