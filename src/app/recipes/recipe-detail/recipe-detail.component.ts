@@ -33,4 +33,10 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
   }
 
+  onEditRecipe() {
+    this.router.navigate(['edit'], {relativeTo: this.route});
+    // GCR: this more complex version below does the same thing but shows how you can add other dynamic content to the links
+    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
+  }
+
 }
