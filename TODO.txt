@@ -1,4 +1,5 @@
 TODO: 
-- Send ingredient items from recipes to shopping list
-- Inform shopping list component that something changed
-- Needs to be able to add more than one item to the shopping list at once
+- Implement child routing for the recipe components
+- Set up router
+- Creating component that says "Please select recipe" as an initial view
+- Configure so it starts with that welcome component, and then loads a detail view of a given recipe if one is selected

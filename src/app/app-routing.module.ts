@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
@@ -13,7 +14,13 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 const appRoutes: Routes = [
   //GCR: the pathMatch: 'full' is key to avoid this redirect applying to all routes (bc all are prefixed with '')
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'recipes', component: RecipesComponent },
+  { path: 'recipes', component: RecipesComponent, 
+    children: [
+      { path: '', component: RecipeStartComponent, pathMatch: 'full' },
+      { path: ':id', component: RecipeDetailComponent }
+
+    ] 
+  },
   { path: 'shopping-list', component: ShoppingListComponent }
 ];
 
