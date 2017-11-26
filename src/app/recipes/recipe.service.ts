@@ -11,9 +11,8 @@ export class RecipeService {
 
   constructor(private shoppingListService: ShoppingListService) {}
 
-  private recepies: Recipe[] = [
+  private recipes: Recipe[] = [
     new Recipe(
-      0,
       'Tasty Schnitzel', 
       'A super-tasty Schnitzel - just awesome!', 
       'https://upload.wikimedia.org/wikipedia/commons/a/ae/Wiener-Schnitzel02.jpg',
@@ -22,7 +21,6 @@ export class RecipeService {
         new Ingredient('French Fries',20),        
       ]),
     new Recipe(
-      1,
       'Big Fat Burger', 
       'Yeah, its that good', 
       'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hamburger_%28black_bg%29.jpg/1920px-Hamburger_%28black_bg%29.jpg',
@@ -33,16 +31,21 @@ export class RecipeService {
   ];
 
   getRecipes() {
-    return this.recepies.slice();
+    return this.recipes.slice();
   }
 
-  getRecipe(id: number) {
-    const recipe = this.recepies.find(
-      (r) => {
-        return r.id === id;
-      }
-    );
-    return recipe;
+  //GCR: Can be used if we have actual IDs
+  // getRecipe(id: number) {
+  //   const recipe = this.recepies.find(
+  //     (r) => {
+  //       return r.id === id;
+  //     }
+  //   );
+  //   return recipe;
+  // }
+
+  getRecipe(index: number) {
+    return this.recipes[index];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
