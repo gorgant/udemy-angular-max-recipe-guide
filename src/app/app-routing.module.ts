@@ -1,7 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -12,29 +10,23 @@ import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-it
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 
-import { DropdownDirective } from './shared/dropdown.directive';
-import { ShoppingListService } from './shopping-list/shopping-list.service';
-import { RecipeService } from './recipes/recipe.service';
+const appRoutes: Routes = [
+  { path: '', component: HeaderComponent },
+  { path: 'recipes', component: RecipesComponent },
+  { path: 'shopping-list', component: ShoppingListComponent }
+]
 
-import { AppRoutingModule } from './app-routing.module';
-
+//This assigns the appRoutes above to the RouterModule, which then gets exported to the app.module
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    DropdownDirective
-  ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    // Use this hash route version if getting 404 error in deployment (see "understanding location strategies")
+    // RouterModule.forRoot(appRoutes, {useHash: true})
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [ShoppingListService, RecipeService],
-  bootstrap: [AppComponent]
+  exports: [RouterModule]
+
 })
-export class AppModule { }
+
+export class AppRoutingModule {
+  
+}
