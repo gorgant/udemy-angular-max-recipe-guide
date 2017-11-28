@@ -13,7 +13,7 @@ export class RecipeEditComponent implements OnInit {
   editMode = false;
   recipeForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, 
+  constructor(private route: ActivatedRoute,
               private recipeService: RecipeService) { }
 
   ngOnInit() {
@@ -21,7 +21,7 @@ export class RecipeEditComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          //Sets edit mode if there's an ID in the url
+          // Sets edit mode if there's an ID in the url
           this.editMode = params['id'] != null;
           this.initForm();
         }
@@ -30,6 +30,15 @@ export class RecipeEditComponent implements OnInit {
 
   onSubmit() {
     console.log(this.recipeForm);
+  }
+
+  onAddIngredient() {
+    (<FormArray>this.recipeForm.get('ingredients')).push(
+      new FormGroup({
+        'name': new FormControl(),
+        'amount': new FormControl
+      })
+    );
   }
 
   private initForm() {
