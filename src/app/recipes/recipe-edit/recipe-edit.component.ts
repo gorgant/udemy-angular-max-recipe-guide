@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -12,9 +13,11 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
+  recipe: Recipe;
 
   constructor(private route: ActivatedRoute,
-              private recipeService: RecipeService) { }
+              private recipeService: RecipeService,
+              private router: Router) { }
 
   ngOnInit() {
     this.route.params
@@ -29,7 +32,26 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.recipeForm);
+    // // GCR: This is the formal way of doing it, but the active version is a more
+    // // consise way as long as the reactive form is set up in the same format as the model
+    // const values = this.recipeForm.value;
+    // const newRecipe = new Recipe(
+    //     values.name,
+    //     values.description,
+    //     values.imagePath,
+    //     values.ingredients);
+    if (this.editMode) {
+      this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+    } else {
+      this.recipeService.addRecipe(this.recipeForm.value);
+    }
+    console.log(this.recipeForm.value);
+    this.recipeForm.reset();
+    this.editMode = false;
+  }
+
+  onCancel() {
+    this.router.navigate(['recipes']);
   }
 
   onAddIngredient() {

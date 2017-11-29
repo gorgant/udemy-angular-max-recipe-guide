@@ -30,7 +30,7 @@ export class ShoppingListService {
     // for (let ingredient of ingredients) {
     //   this.ingredients.push(ingredient);
     // }
-    //Here's a snazzier version that uses a "spread" operator to pull individual items out of an array
+    // Here's a snazzier version that uses a "spread" operator to pull individual items out of an array
     this.ingredients.push(...ingredients);
     this.ingredientsChanged.next(this.ingredients.slice());
   }
@@ -42,6 +42,6 @@ export class ShoppingListService {
 
   deleteIngredient(index: number) {
     this.ingredients.splice(index, 1);
-    this.ingredientsChanged.next(this.ingredients.slice()); 
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 }
