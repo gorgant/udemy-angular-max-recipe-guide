@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
+// tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 
@@ -29,17 +30,10 @@ export class DataStorageService {
 
   getRecipes() {
     return this.http.get('https://udemy-ng-recipe-book-83029.firebaseio.com/recipes.json')
-      // This map function is an observable operator that takes the old observable, wraps/turns it into transformed data,
-      // .. and wraps that into another observable
-      .map(
+      .subscribe(
         (response: Response) => {
-          const recipes = response.json();
-          return recipes;
-        }
-      ).catch(
-        (error: Response) => {
-          // This return is because we need to provide a response to the observable
-          return Observable.throw('Something went wrong');
+          const recipes: Recipe[] = response.json();
+          this.recipeService.setRecipes(recipes);
         }
       );
   }

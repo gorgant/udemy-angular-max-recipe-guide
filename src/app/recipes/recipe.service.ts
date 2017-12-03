@@ -31,7 +31,7 @@ export class RecipeService {
     //     new Ingredient('Meat', 1),
     //   ]),
   ];
-  loadRecipesFromServer(recipes: Recipe[]) {
+  setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;
     this.recipesChanged.next(this.recipes.slice());
   }
