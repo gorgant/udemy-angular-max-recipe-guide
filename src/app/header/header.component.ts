@@ -1,4 +1,9 @@
+import { RecipeService } from './../recipes/recipe.service';
 import { Component, OnInit } from '@angular/core';
+import { Response } from '@angular/http';
+
+import { DataStorageService } from './../shared/data-storage.service';
+import { Recipe } from './../recipes/recipe.model';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +12,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dataStorageService: DataStorageService,
+    private recipeService: RecipeService) { }
 
   ngOnInit() {
+  }
+  onSaveRecipes() {
+    this.dataStorageService.storeRecipes()
+      .subscribe(
+        (response: Response) => console.log(response),
+        (error) => console.log(error)
+      );
+  }
+  onFetchRecipes() {
+    this.dataStorageService.getRecipes()
+      .subscribe(
+        (recipes: Recipe[]) => this.recipeService.loadRecipesFromServer(recipes),
+        (error) => console.log(error)
+      );
   }
 
 }
