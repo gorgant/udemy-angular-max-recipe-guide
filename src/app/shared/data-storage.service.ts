@@ -29,10 +29,22 @@ export class DataStorageService {
   }
 
   getRecipes() {
+    // this mapping function ensures that if there are no ingredients, a blank array is inserted
     return this.http.get('https://udemy-ng-recipe-book-83029.firebaseio.com/recipes.json')
-      .subscribe(
+      .map(
         (response: Response) => {
           const recipes: Recipe[] = response.json();
+          for (let recipe of recipes) {
+            if (!recipe['ingredients']) {
+              console.log(recipe);
+              recipe['ingredients'] = [];
+            }
+          }
+          return recipes;
+        }
+      )
+      .subscribe(
+        (recipes: Recipe[]) => {
           this.recipeService.setRecipes(recipes);
         }
       );
