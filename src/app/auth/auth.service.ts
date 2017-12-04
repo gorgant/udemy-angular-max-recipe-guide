@@ -25,6 +25,11 @@ export class AuthService {
       );
   }
 
+  logout() {
+    firebase.auth().signOut();
+    this.token = null;
+  }
+
   getToken() {
     // This is an asynchronous call because not only does it fetch from local storage (synchronous)
     // ... it also pings Firebase server to ensure the token hasn't expired
@@ -39,4 +44,5 @@ export class AuthService {
   isAuthenticated() {
     return this.token != null;
   }
+
 }
