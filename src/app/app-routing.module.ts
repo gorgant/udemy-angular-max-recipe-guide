@@ -20,14 +20,6 @@ const appRoutes: Routes = [
   // GCR: the order of these is critical -- e.g., parameters like ':id'
   // ...need to go after 'new', else for 'new' it will try to parse that as an ID
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'recipes', component: RecipesComponent,
-    children: [
-      { path: '', component: RecipeStartComponent, pathMatch: 'full' },
-      { path: 'new', component: RecipeEditComponent, canActivate: [AuthGuard] },
-      { path: ':id', component: RecipeDetailComponent },
-      { path: ':id/edit', component: RecipeEditComponent, canActivate: [AuthGuard] }
-    ]
-  },
   { path: 'shopping-list', component: ShoppingListComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
