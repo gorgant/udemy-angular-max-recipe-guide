@@ -6,6 +6,8 @@ import { RecipesComponent } from './recipes.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
+// GCR: the order of these is critical -- e.g., parameters like ':id'
+// ...need to go after 'new', else for 'new' it will try to parse that as an ID
 const recipesRoutes: Routes = [
   { path: 'recipes', component: RecipesComponent,
   children: [
