@@ -16,7 +16,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <!-- using a div here instead of ng-template would break ul layout -->
-        <ng-template [ngIf]="!authService.isAuthenticated()">
+        <ng-template [ngIf]="!checkAuthentication()">
           <li><a routerLink="/signup">Register</a></li>
           <li><a routerLink="/signin">Login</a></li>
         </ng-template>
