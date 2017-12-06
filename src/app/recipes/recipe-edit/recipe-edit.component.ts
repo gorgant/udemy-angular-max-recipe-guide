@@ -105,4 +105,10 @@ export class RecipeEditComponent implements OnInit {
       'ingredients': recipeIngredients
     });
   }
+
+  // Helper method to ensure the .controls is not used in the html, which is required for a production build
+  // See sudharsanmit's solution here: https://github.com/angular/angular/issues/10192
+  getIngredients(recipeForm) {
+    return recipeForm.get('ingredients').controls;
+  }
 }
