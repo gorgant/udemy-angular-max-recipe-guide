@@ -1,12 +1,11 @@
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-
 const appRoutes: Routes = [
-  // GCR: the pathMatch: 'full' is key to avoid this redirect applying to all routes (bc all are prefixed with '')
-  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'shopping-list', component: ShoppingListComponent },
+  { path: '', component: HomeComponent },
+  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
+  { path: 'shopping-list', loadChildren: './shopping-list/shopping-list.module#ShoppingListModule' },
 ];
 
 // This assigns the appRoutes above to the RouterModule, which then gets exported to the app.module
