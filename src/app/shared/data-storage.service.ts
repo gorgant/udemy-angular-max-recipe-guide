@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-// tslint:disable-next-line:import-blacklist
-import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
 import { Recipe } from './../recipes/recipe.model';
