@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
@@ -12,7 +13,7 @@ import { AuthService } from './../auth/auth.service';
 export class DataStorageService {
 
   constructor(
-    private http: Http,
+    private httpClient: HttpClient,
     private recipeService: RecipeService,
     private authService: AuthService) {}
 
@@ -25,21 +26,19 @@ export class DataStorageService {
     // The url has that 'data.json' parameter which is firebase specific, the 'data' node can be whatever string you want
     // ..it will create a node with that name in the firebase database
     // For Firebase specifically, the PUT request overwrites data rather than appending it like the POST request
-    return this.http.put(
+    return this.httpClient.put(
       'https://udemy-ng-recipe-book-83029.firebaseio.com/recipes.json?auth=' + token,
-      recipes,
-      {headers: headers});
+      recipes);
   }
 
   getRecipes() {
     const token = this.authService.getToken();
 
     // this mapping function ensures that if there are no ingredients, a blank array is inserted
-    return this.http.get('https://udemy-ng-recipe-book-83029.firebaseio.com/recipes.json?auth=' + token)
+    return this.httpClient.get<Recipe[]>('https://udemy-ng-recipe-book-83029.firebaseio.com/recipes.json?auth=' + token)
       .map(
-        (response: Response) => {
-          const recipes: Recipe[] = response.json();
-          for (const recipe of recipes) {
+        (recipes) => {
+          for (let recipe of recipes) {
             if (!recipe['ingredients']) {
               recipe['ingredients'] = [];
             }
