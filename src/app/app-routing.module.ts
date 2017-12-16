@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { AuthGuard } from './auth/auth-guard.service';
 import { HomeComponent } from './core/home/home.component';
 
@@ -8,7 +9,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   // This "lazy load" style using loadChildren ensures these only load when they are called, rather than at app start
   { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule', canLoad: [AuthGuard] },
-  { path: 'shopping-list', loadChildren: './shopping-list/shopping-list.module#ShoppingListModule' },
+  { path: 'shopping-list', component: ShoppingListComponent }
 ];
 
 // This assigns the appRoutes above to the RouterModule, which then gets exported to the app.module
