@@ -1,4 +1,4 @@
-import { Store } from '@ngrx/store/src/store';
+import { Store } from '@ngrx/store';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
