@@ -5,7 +5,6 @@ import { AuthGuard } from './../auth/auth-guard.service';
 import { AuthService } from './../auth/auth.service';
 import { DataStorageService } from './../shared/data-storage.service';
 import { RecipeService } from './../recipes/recipe.service';
-import { ShoppingListService } from './../shopping-list/shopping-list.service';
 import { AuthInterceptor } from './../shared/auth.interceptor';
 import { LoggingInterceptor } from './../shared/logging.interceptor';
 
@@ -34,7 +33,6 @@ import { HeaderComponent } from './header/header.component';
   ],
   providers: [
     // Angular will load one instance of all of these for the app as long as this core module is loaded eagerly
-    ShoppingListService,
     RecipeService,
     DataStorageService,
     AuthService,
