@@ -3,11 +3,6 @@ import { Action } from '@ngrx/store';
 import * as ShoppingListActions from './shopping-list.actions';
 import { Ingredient } from './../../shared/ingredient.model';
 
-// This nested interface here makes it easier to assign the type to constructors throughout the app
-export interface AppState {
-  shoppingList: State;
-}
-
 export interface State {
   ingredients: Ingredient[];
   editedIngredient: Ingredient;
@@ -23,6 +18,7 @@ const initialState: State = {
   editedIngredientIndex: -1
 };
 
+// Basic setup: import state, export action
 export function shoppingListReducer(state = initialState, action: ShoppingListActions.ShoppingListActions) {
   switch (action.type) {
     case ShoppingListActions.ADD_INGREDIENT:
