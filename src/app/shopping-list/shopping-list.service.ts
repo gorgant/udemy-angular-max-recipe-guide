@@ -21,15 +21,6 @@ export class ShoppingListService {
     return this.ingredients[index];
   }
 
-  addIngredients(ingredients: Ingredient[]) {
-    // for (let ingredient of ingredients) {
-    //   this.ingredients.push(ingredient);
-    // }
-    // Here's a snazzier version that uses a "spread" operator to pull individual items out of an array
-    this.ingredients.push(...ingredients);
-    this.ingredientsChanged.next(this.ingredients.slice());
-  }
-
   updateIngredient(index: number, newIngredient: Ingredient) {
     this.ingredients[index] = newIngredient;
     this.ingredientsChanged.next(this.ingredients.slice());
