@@ -62,11 +62,13 @@ export class DataStorageService {
               recipe['ingredients'] = [];
             }
           }
-          return [];
+          return recipes;
         }
       )
       .subscribe(
         (recipes: Recipe[]) => {
+          console.log('here are the recipes to send: ');
+          console.log(recipes);
           this.recipeService.setRecipes(recipes);
         }
       );
