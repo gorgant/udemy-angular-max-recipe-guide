@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 
@@ -12,6 +13,7 @@ import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
 
 import { reducers } from './store/app.reducers';
+import { AuthEffects } from './auth/store/auth.effects';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { reducers } from './store/app.reducers';
     AuthModule,
     CoreModule,
     ShoppingListModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffects])
   ],
   // Providers are all stored in the core module
   providers: [],
