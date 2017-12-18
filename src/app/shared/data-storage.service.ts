@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 
 import { Recipe } from './../recipes/recipe.model';
 import { RecipeService } from './../recipes/recipe.service';
-import { AuthService } from './../auth/auth.service';
 
 // Need the injectable here to activate the Http service in the constructor (make sure to import the Http into the app module as well)
 @Injectable()
@@ -13,8 +12,7 @@ export class DataStorageService {
 
   constructor(
     private httpClient: HttpClient,
-    private recipeService: RecipeService,
-    private authService: AuthService) {}
+    private recipeService: RecipeService) {}
 
   storeRecipes() {
     // We'd need these headers if we were using some other form of authorization other than Firebase

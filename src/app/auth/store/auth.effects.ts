@@ -4,6 +4,7 @@ import { Effect, Actions } from '@ngrx/effects';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/do';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import * as firebase from 'firebase';
 
@@ -78,9 +79,17 @@ export class AuthEffects {
       ];
     });
 
+    @Effect({dispatch: false})
+    authLogout = this.actions$
+      .ofType(AuthActions.LOGOUT)
+      .do(() => {
+        this.router.navigate(['/']);
+      });
+
     // $ sign is optional and indidcates an observable
     // actions$ is a list of all the actions we have in our app
-    constructor(private actions$: Actions, private router: Router) {
-
+    constructor(
+      private actions$: Actions,
+      private router: Router) {
     }
 }
