@@ -29,6 +29,7 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
     case ShoppingListActions.ADD_INGREDIENTS:
       return {
         ...state,
+        // Add the new payload to the existing array
         ingredients: [...state.ingredients, ...action.payload]
       };
     case ShoppingListActions.UPDATE_INGREDIENT:
@@ -40,7 +41,7 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
       };
       // fetch the existing ingredients in a modifiable array
       const ingredients = [...state.ingredients];
-      // update the ingredients
+      // update the selected ingredient
       ingredients[state.editedIngredientIndex] = updatedIngredient;
       // replace data in primary array with this new array of ingredients
       return {
