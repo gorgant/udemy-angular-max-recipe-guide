@@ -13,6 +13,7 @@ import * as fromRecipe from '../store/recipe.reducers';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
+  // Holds the recipe state, and within that, the recipes array
   recipeState: Observable<fromRecipe.State>;
 
   constructor(private router: Router,
@@ -20,6 +21,7 @@ export class RecipeListComponent implements OnInit {
               private store: Store<fromRecipe.FeatureState>) {}
 
   ngOnInit() {
+    // This 'recipes' matches the forFeature of the StoreModule import in the recipes module
     this.recipeState = this.store.select('recipes');
   }
 
