@@ -36,34 +36,4 @@ export class RecipeService {
   getRecipes() {
     return this.recipes.slice();
   }
-
-  // GCR: Can be used if we have actual IDs
-  // getRecipe(id: number) {
-  //   const recipe = this.recepies.find(
-  //     (r) => {
-  //       return r.id === id;
-  //     }
-  //   );
-  //   return recipe;
-  // }
-
-  getRecipe(index: number) {
-    return this.recipes[index];
-  }
-
-  addRecipe(recipe: Recipe) {
-    this.recipes.push(recipe);
-    this.recipesChanged.next(this.recipes.slice());
-  }
-
-  updateRecipe(index: number, recipe: Recipe) {
-    this.recipes[index] = recipe;
-    this.recipesChanged.next(this.recipes.slice());
-  }
-
-  deleteRecipe(index: number) {
-    this.recipes.splice(index, 1);
-    this.recipesChanged.next(this.recipes.slice());
-  }
-
 }
