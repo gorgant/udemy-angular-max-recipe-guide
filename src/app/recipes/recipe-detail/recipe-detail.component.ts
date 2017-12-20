@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/take';
 
 import * as ShoppingListActions from './../../shopping-list/store/shopping-list.actions';
 import * as fromShoppingList from '../../shopping-list/store/shopping-list.reducers';
